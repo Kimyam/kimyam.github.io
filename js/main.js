@@ -67,6 +67,11 @@ const BookmarkList = [
     $('[data-clock]').clock()
     $('[data-search-box]').searchBox()
     $('[data-bookmark-box]').bookmarkBox(BookmarkList)
+    if ('serviceWorker' in window.navigator) {
+      window.navigator.serviceWorker.register('service-worker.js').catch(err => {
+        console.log('registration error ', err)
+      })
+    }
   }
 })(window, document, window.jQuery);
 
